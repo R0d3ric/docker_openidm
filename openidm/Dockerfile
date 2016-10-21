@@ -23,6 +23,7 @@ RUN unzip /var/tmp/openidm.zip && \
 
 ADD run.sh /opt/openidm/run.sh
 ADD logging.properties /opt/openidm/logging.properties
+ADD sync.json /opt/openidm/conf/sync.json
 
 WORKDIR /opt/openidm
 

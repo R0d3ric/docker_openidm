@@ -1,0 +1,101 @@
+{
+    "mappings" : [
+        {
+            "target" : "managed/user",
+            "source" : "system/openldap/__ACCOUNT__",
+            "name" : "sourceOpenldap__ACCOUNT___managedUser",
+            "properties" : [
+                {
+                    "target" : "mail",
+                    "source" : "mail",
+                    "transform" : {
+                        "type" : "text/javascript",
+                        "globals" : { },
+                        "source" : "source.toString()"
+                    }
+                },
+                {
+                    "target" : "sn",
+                    "source" : "sn",
+                    "transform" : {
+                        "type" : "text/javascript",
+                        "globals" : { },
+                        "source" : "source.toString()"
+                    }
+                },
+                {
+                    "target" : "givenName",
+                    "source" : "givenName",
+                    "transform" : {
+                        "type" : "text/javascript",
+                        "globals" : { },
+                        "source" : "source.toString()"
+                    }
+                },
+                {
+                    "target" : "userName",
+                    "source" : "uid",
+                    "transform" : {
+                        "type" : "text/javascript",
+                        "globals" : { },
+                        "source" : "source.toString()"
+                    }
+                }
+            ],
+            "policies" : [
+                {
+                    "action" : "ASYNC",
+                    "situation" : "AMBIGUOUS"
+                },
+                {
+                    "action" : "ASYNC",
+                    "situation" : "SOURCE_MISSING"
+                },
+                {
+                    "action" : "CREATE",
+                    "situation" : "MISSING"
+                },
+                {
+                    "action" : "ASYNC",
+                    "situation" : "FOUND_ALREADY_LINKED"
+                },
+                {
+                    "action" : "ASYNC",
+                    "situation" : "UNQUALIFIED"
+                },
+                {
+                    "action" : "ASYNC",
+                    "situation" : "UNASSIGNED"
+                },
+                {
+                    "action" : "ASYNC",
+                    "situation" : "LINK_ONLY"
+                },
+                {
+                    "action" : "ASYNC",
+                    "situation" : "TARGET_IGNORED"
+                },
+                {
+                    "action" : "ASYNC",
+                    "situation" : "SOURCE_IGNORED"
+                },
+                {
+                    "action" : "ASYNC",
+                    "situation" : "ALL_GONE"
+                },
+                {
+                    "action" : "ASYNC",
+                    "situation" : "CONFIRMED"
+                },
+                {
+                    "action" : "ASYNC",
+                    "situation" : "FOUND"
+                },
+                {
+                    "action" : "CREATE",
+                    "situation" : "ABSENT"
+                }
+            ]
+        }
+    ]
+}
