@@ -12,7 +12,14 @@ Version : 0.2
 
 ## SOURCES HIERARCHY
 
-> TODO
+> ***docker-compose.yml***
+>    Contains the settings to launch the 3 containers : how to build them, which ports to synchronize, which volumes to synchronize, topology of the network, ...
+>
+> ***openidm***
+>    Contains specific files to build the openidm image
+>
+> ***openidm-openldap***
+>    Contains specific files to build the ldap
 
 ## INSTALLING THE IMAGE
 
