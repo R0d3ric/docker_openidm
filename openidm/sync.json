@@ -2,93 +2,73 @@
     "mappings" : [
         {
             "target" : "managed/user",
-            "source" : "system/openldap/__ACCOUNT__",
-            "name" : "sourceOpenldap__ACCOUNT___managedUser",
+            "source" : "system/openldap/account_secu",
+            "name" : "sourceOpenldapAccount_secu_managedUser",
             "properties" : [
                 {
                     "target" : "mail",
-                    "source" : "mail",
-                    "transform" : {
-                        "type" : "text/javascript",
-                        "globals" : { },
-                        "source" : "source.toString()"
-                    }
+                    "source" : "mail"
                 },
                 {
                     "target" : "sn",
-                    "source" : "sn",
-                    "transform" : {
-                        "type" : "text/javascript",
-                        "globals" : { },
-                        "source" : "source.toString()"
-                    }
+                    "source" : "sn"
                 },
                 {
                     "target" : "givenName",
-                    "source" : "givenName",
-                    "transform" : {
-                        "type" : "text/javascript",
-                        "globals" : { },
-                        "source" : "source.toString()"
-                    }
+                    "source" : "givenName"
                 },
                 {
                     "target" : "userName",
-                    "source" : "uid",
-                    "transform" : {
-                        "type" : "text/javascript",
-                        "globals" : { },
-                        "source" : "source.toString()"
-                    }
+                    "source" : "uid"
                 }
             ],
             "policies" : [
                 {
-                    "action" : "ASYNC",
+                    "action" : "EXCEPTION",
                     "situation" : "AMBIGUOUS"
                 },
                 {
-                    "action" : "ASYNC",
+                    "action" : "EXCEPTION",
                     "situation" : "SOURCE_MISSING"
                 },
                 {
-                    "action" : "CREATE",
+                    "action" : "EXCEPTION",
                     "situation" : "MISSING"
                 },
                 {
-                    "action" : "ASYNC",
+                    "action" : "EXCEPTION",
                     "situation" : "FOUND_ALREADY_LINKED"
                 },
                 {
-                    "action" : "ASYNC",
+                    "action" : "DELETE",
                     "situation" : "UNQUALIFIED"
                 },
                 {
-                    "action" : "ASYNC",
+                    "action" : "DELETE",
                     "situation" : "UNASSIGNED"
                 },
                 {
-                    "action" : "ASYNC",
+                    "action" : "EXCEPTION",
                     "situation" : "LINK_ONLY"
                 },
                 {
-                    "action" : "ASYNC",
+                    "action" : "IGNORE",
                     "situation" : "TARGET_IGNORED"
                 },
                 {
-                    "action" : "ASYNC",
+                    "action" : "IGNORE",
                     "situation" : "SOURCE_IGNORED"
                 },
                 {
-                    "action" : "ASYNC",
+                    "action" : "IGNORE",
                     "situation" : "ALL_GONE"
                 },
                 {
-                    "action" : "ASYNC",
+                    "action" : "UPDATE",
                     "situation" : "CONFIRMED"
                 },
                 {
-                    "action" : "ASYNC",
+                    "action" : "UPDATE",
                     "situation" : "FOUND"
                 },
                 {
@@ -96,6 +76,89 @@
                     "situation" : "ABSENT"
                 }
             ]
+        },
+        {
+            "target" : "system/openldap/account_secu",
+            "source" : "managed/user",
+            "name" : "managedUser_sourceOpenldapAccount_secu",
+            "properties" : [
+                {
+                    "target" : "uid",
+                    "source" : "userName"
+                },
+                {
+                    "target" : "sn",
+                    "source" : "sn"
+                },
+                {
+                    "target" : "givenName",
+                    "source" : "givenName"
+                },
+                {
+                    "target" : "mail",
+                    "source" : "mail"
+                },
+                {
+                    "target" : "cn",
+                    "source" : "_id",
+                    "default" : "cnTest"
+                }
+            ],
+            "policies" : [
+                {
+                    "action" : "EXCEPTION",
+                    "situation" : "AMBIGUOUS"
+                },
+                {
+                    "action" : "EXCEPTION",
+                    "situation" : "SOURCE_MISSING"
+                },
+                {
+                    "action" : "EXCEPTION",
+                    "situation" : "MISSING"
+                },
+                {
+                    "action" : "EXCEPTION",
+                    "situation" : "FOUND_ALREADY_LINKED"
+                },
+                {
+                    "action" : "DELETE",
+                    "situation" : "UNQUALIFIED"
+                },
+                {
+                    "action" : "EXCEPTION",
+                    "situation" : "UNASSIGNED"
+                },
+                {
+                    "action" : "EXCEPTION",
+                    "situation" : "LINK_ONLY"
+                },
+                {
+                    "action" : "IGNORE",
+                    "situation" : "TARGET_IGNORED"
+                },
+                {
+                    "action" : "IGNORE",
+                    "situation" : "SOURCE_IGNORED"
+                },
+                {
+                    "action" : "IGNORE",
+                    "situation" : "ALL_GONE"
+                },
+                {
+                    "action" : "UPDATE",
+                    "situation" : "CONFIRMED"
+                },
+                {
+                    "action" : "UPDATE",
+                    "situation" : "FOUND"
+                },
+                {
+                    "action" : "CREATE",
+                    "situation" : "ABSENT"
+                }
+            ],
+            "links" : "sourceOpenldapAccount_secu_managedUser"
         }
     ]
 }

@@ -14,7 +14,7 @@ services:
     container_name: openidm-postgres
     image: forgerock/openidm-postgres
     volumes:
-      - /opt/dockers/openidm4-postgres:/var/lib/postgresql/data/pgdata
+      - /opt/dockers/openidm-postgres:/var/lib/postgresql/data/pgdata
     networks:
       default:
         aliases:
@@ -30,13 +30,13 @@ services:
   openidm4-openldap:
     container_name: openidm-openldap
     #image: dinkel/openldap
-    build: openidm-openldap/.
     ports:
       - "389:389"
     volumes:
-      - /opt/dockers/openidm4-openldap/etc:/etc/ldap
-      - /opt/dockers/openidm4-openldap/var/lib:/var/lib/ldap
-      - /opt/dockers/openidm4-openldap/prepopulate:/etc/ldap/prepopulate
+      - /opt/dockers/openidm-openldap/etc/ldap:/etc/ldap
+      - /opt/dockers/openidm-openldap/var/lib/ldap:/var/lib/ldap
+      - /home/user/share:/etc/ldap/prepopulate
+    build: openidm-openldap/.
     networks:
       default:
         aliases:
@@ -67,7 +67,7 @@ services:
      - openidm4-openldap
     # Edit this for your environment. This should point to your custom OpenIDM config
     volumes:
-      - /opt/dockers/openidm4MERDE:/opt/openidm/custom
+      - /opt/dockers/openidm:/opt/openidm/custom
     networks:
       default:
         aliases:

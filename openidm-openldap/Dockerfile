@@ -5,6 +5,9 @@ MAINTAINER roderic.halleguen@capgemini.com
 RUN apt-get update && apt-get install ldap-utils --assume-yes \
  && rm -rf /var/lib/apt/lists/*
 
+#ADD hierarchy.ldif /opt/dockers/openidm-openldap/prepopulate/hierarchy.ldif
+#ADD population.ldif /opt/dockers/openidm-openldap/prepopulate/population.ldif
+
 #RUN apt-get upgrade
 
 #ADD hierarchy.ldif /etc/ldap.dist/prepopulate/hierarchy.ldif
