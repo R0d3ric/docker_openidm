@@ -1,0 +1,76 @@
+# Sample docker-compose that will run OpenIDM and use Postgres as the repo
+
+# The postgres image below will save the data to the host's /var/tmp/pg
+# This will give you persistence across restarts
+
+version: '2'
+
+networks:
+  default:
+
+services:
+
+  openidm4-postgres:
+    container_name: openidm-postgres
+    image: forgerock/openidm-postgres
+    volumes:
+      - /opt/dockers/openidm4-postgres:/var/lib/postgresql/data/pgdata
+    networks:
+      default:
+        aliases:
+          - openidm-postgres.cybersecu.cap
+    environment:
+      PGDATA: /var/lib/postgresql/data/pgdata
+      POSTGRES_PASSWORD: openidm
+      POSTGRES_USER: openidm
+# Run openidm - linked to postgres container
+# Shows an example of mounting local Mac config volume for developement
+#
+
+  openidm4-openldap:
+    container_name: openidm-openldap
+    #image: dinkel/openldap
+    build: openidm-openldap/.
+    ports:
+      - "389:389"
+    volumes:
+      - /opt/dockers/openidm4-openldap/etc:/etc/ldap
+      - /opt/dockers/openidm4-openldap/var/lib:/var/lib/ldap
+      - /opt/dockers/openidm4-openldap/prepopulate:/etc/ldap/prepopulate
+    networks:
+      default:
+        aliases:
+          - openidm-ldap.cybersecu.cap
+    environment:
+      SLAPD_PASSWORD: password
+      SLAPD_DOMAIN: cybersecu.cap
+      SLAPD_ADDITIONAL_SCHEMAS: collective
+      SLAPD_ADDITIONAL_SCHEMAS: corba
+      SLAPD_ADDITIONAL_SCHEMAS: duaconf
+      SLAPD_ADDITIONAL_SCHEMAS: dyngroup
+      SLAPD_ADDITIONAL_SCHEMAS: java
+      SLAPD_ADDITIONAL_SCHEMAS: misc
+      SLAPD_ADDITIONAL_SCHEMAS: openldap
+      SLAPD_ADDITIONAL_SCHEMAS: pmi
+      SLAPD_ADDITIONAL_SCHEMAS: ppolicy
+      SLAPD_ADDITIONAL_MODULES: memberof
+      SLAPD_ADDITIONAL_MODULES: ppolicy
+
+  openidm:
+    container_name: openidm
+    #image: forgerock/openidm:nightly
+    build: openidm/.
+    ports:
+     - "5050:8080"
+    links:
+     - openidm4-postgres
+     - openidm4-openldap
+    # Edit this for your environment. This should point to your custom OpenIDM config
+    volumes:
+      - /opt/dockers/openidm4MERDE:/opt/openidm/custom
+    networks:
+      default:
+        aliases:
+          - openidm.cybersecu.cap
+    environment:
+      OPENIDM_CUSTOM_CONF: custom/config/openidm

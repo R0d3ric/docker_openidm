@@ -1,0 +1,64 @@
+dn: uid=jpoisson,ou=People,dc=cybersecu,dc=cap
+uid: jpoisson
+cn: Poisson
+sn: Jean-Patrick Poisson
+givenName: Jean-Patrick
+mail: jean-patrick.poisson@cybersecu.cap
+uidNumber: 1
+gidNumber: 12
+homeDirectory: /
+objectclass: top
+objectclass: inetOrgPerson
+objectclass: PosixAccount
+
+dn: uid=ccarpe,ou=People,dc=cybersecu,dc=cap
+uid: ccarpe
+cn: Carpe
+sn: Catherine Carpe
+givenName: Catherine
+mail: catherine.carpe@cybersecu.cap
+uidNumber: 2
+gidNumber: 11
+homeDirectory: /
+objectclass: top
+objectclass: inetOrgPerson
+objectclass: PosixAccount
+
+dn: uid=tbonobo,ou=People,dc=cybersecu,dc=cap
+uid: tbonobo
+cn: Bonobo
+sn: Tatiana Bonobo
+givenName: Tatiana
+mail: tatiana.bonobo@cybersecu.cap
+uidNumber: 3
+gidNumber: 21
+homeDirectory: /
+objectclass: top
+objectclass: inetOrgPerson
+objectclass: PosixAccount
+
+dn: uid=jpoulet,ou=People,dc=cybersecu,dc=cap
+uid: jpoulet
+cn: Poulet
+sn: Jacques Poulet
+givenName: Jacques
+mail: jacques.poulet@cybersecu.cap
+uidNumber: 4
+gidNumber: 21
+homeDirectory: /
+objectclass: top
+objectclass: inetOrgPerson
+objectclass: PosixAccount
+
+dn: uid=flelievre,ou=People,dc=cybersecu,dc=cap
+uid: flelievre
+cn: Le Lievre
+sn: Frédéric Le Lièvre
+givenName: Frédéric
+mail: frederic.lelievre@cybersecu.cap
+uidNumber: 5
+gidNumber: 10
+homeDirectory: /
+objectclass: top
+objectclass: inetOrgPerson
+objectclass: PosixAccount

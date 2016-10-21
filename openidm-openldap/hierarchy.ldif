@@ -1,0 +1,70 @@
+dn: ou=People,dc=cybersecu,dc=cap
+ou: People
+objectclass: top
+objectclass: organizationalUnit
+
+dn: ou=Groups,dc=cybersecu,dc=cap
+ou: Groups
+objectclass: top
+objectclass: organizationalUnit
+
+dn: ou=Computers,dc=cybersecu,dc=cap
+ou: Computers
+objectclass: top
+objectclass: organizationalUnit
+
+dn: ou=Apps,dc=cybersecu,dc=cap
+ou: Apps
+objectclass: top
+objectclass: organizationalUnit
+
+dn: ou=App1,ou=Apps,dc=cybersecu,dc=cap
+ou: App1
+objectclass: top
+objectclass: organizationalUnit
+
+dn: cn=Superadmin,ou=App1,ou=Apps,dc=cybersecu,dc=cap
+cn: Superadmin
+description: "Un seul utilisateur dans ce groupe"
+gidNumber: 10
+objectclass: top
+objectclass: posixGroup
+
+dn: cn=Admin,ou=App1,ou=Apps,dc=cybersecu,dc=cap
+cn: Admin
+description: "Administrateurs de l'application"
+gidNumber: 11
+objectclass: top
+objectclass: posixGroup
+
+dn: cn=Simpleuser,ou=App1,ou=Apps,dc=cybersecu,dc=cap
+cn: Simpleuser
+description: "Tous les consommateurs de l'appli 1"
+gidNumber: 12
+objectclass: top
+objectclass: posixGroup
+
+dn: ou=App2,ou=Apps,dc=cybersecu,dc=cap
+ou: App2
+objectclass: top
+objectclass: organizationalUnit
+
+dn: cn=Admin,ou=App2,ou=Apps,dc=cybersecu,dc=cap
+cn: Admin
+description: "Administrateur(s) de l'appli 2"
+gidNumber: 20
+objectclass: top
+objectclass: posixGroup
+
+dn: cn=User,ou=App2,ou=Apps,dc=cybersecu,dc=cap
+cn: User
+description: "Tous les consommateurs de l'appli 2"
+gidNumber: 21
+objectclass: top
+objectclass: posixGroup
+
+
+
+
+
+
