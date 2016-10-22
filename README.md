@@ -37,6 +37,8 @@ Version : 0.2
 
 ## PROBLEMS
 
+The postgresql database image launches but the connection with OpenIDM doesn't work, so it is desactivated for the moment. It seems that the image provided by foregrock doesn't work. OpenIDM also uses an embedded database. This has to be fixed in the next versions.
+
 ## Requirements
 
 See the Docker requirements. This image is optimised for Linux distributions (shared volumes).
