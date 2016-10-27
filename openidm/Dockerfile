@@ -17,9 +17,9 @@ RUN unzip /var/tmp/openidm.zip && \
 
 # Uncomment to use Postgres repo
 # Another (better) option is to mount a new /conf/ dir instead - to take direct control
-#RUN mv /opt/openidm/conf/repo.orientdb.json  /opt/openidm/custom/config/openidm/repo.orientdb.json.bak
-#ADD repo.jdbc.json /opt/openidm/custom/config/openidm/repo.jdbc.json
-#ADD datasource.jdbc-default.json /opt/openidm/custom/config/openidm/datasource.jdbc-default.json
+#RUN mv /opt/openidm/conf/repo.orientdb.json  /opt/openidm/conf/repo.orientdb.json.bak
+#ADD repo.jdbc.json /opt/openidm/conf/repo.jdbc.json
+#ADD datasource.jdbc-default.json /opt/openidm/conf/datasource.jdbc-default.json
 
 ADD run.sh /opt/openidm/run.sh
 ADD logging.properties /opt/openidm/logging.properties
@@ -28,6 +28,6 @@ ADD sync.json /opt/openidm/conf/sync.json
 
 WORKDIR /opt/openidm
 
-#RUN /opt/openidm/run.sh
+#CMD ["/opt/openidm/run.sh"]
 
 CMD ["/opt/openidm/startup.sh"]

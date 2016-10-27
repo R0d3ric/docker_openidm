@@ -1,4 +1,4 @@
-# R0d3ric/docker\_openidm
+# docker\_openidm
 
 You can use this image to run OpenIDM 4 in a container.
 3 containers are launched when launching this image :
@@ -8,7 +8,7 @@ You can use this image to run OpenIDM 4 in a container.
 
 ## Code Status
 
-Version : 0.2
+Version : 0.3
 
 ## SOURCES HIERARCHY
 

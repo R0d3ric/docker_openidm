@@ -14,7 +14,7 @@ services:
     container_name: openidm-postgres
     image: forgerock/openidm-postgres
     volumes:
-      - /opt/dockers/openidm-postgres:/var/lib/postgresql/data/pgdata
+      - /opt/dockers/openidm-postgres2:/var/lib/postgresql/data/pgdata
     networks:
       default:
         aliases:
@@ -26,6 +26,34 @@ services:
 # Run openidm - linked to postgres container
 # Shows an example of mounting local Mac config volume for developement
 #
+
+  openidm4-phppgadmin:
+    container_name: phppgadmin
+    build: phppgadmin/.
+    ports:
+      - "80:80"
+    depends_on:
+     - openidm4-postgres
+    links:
+     - openidm4-postgres
+    networks:
+      default:
+        aliases:
+          - openidm-phppgadmin.cybersecu.cap
+    environment:
+      POSTGRES_HOST: openidm-postgres.cybersecu.cap
+#      POSTGRES_HOST: 192.168.56.102
+      POSTGRES_PORT: 5432
+      POSTGRES_DEFAULTDB: openidm
+      APACHE_SERVERNAME: openidm-phppgadmin.cybersecu.cap
+      APACHE_SERVERADMIN: admin@localhost
+      APACHE_DOCUMENTROOT: /var/www
+      APACHE_RUN_USER: www-data
+      APACHE_RUN_GROUP: www-data
+      APACHE_LOG_DIR: /var/log/apache2
+      APACHE_PID_FILE: /var/run/apache2.pid
+      APACHE_RUN_DIR: /usr/sbin/apache2
+      APACHE_LOCK_DIR: /var/lock/apache2
 
   openidm4-openldap:
     container_name: openidm-openldap
@@ -62,15 +90,18 @@ services:
     build: openidm/.
     ports:
      - "5050:8080"
+    depends_on:
+     - openidm4-postgres
+     - openidm4-openldap
     links:
      - openidm4-postgres
      - openidm4-openldap
     # Edit this for your environment. This should point to your custom OpenIDM config
     volumes:
-      - /opt/dockers/openidm:/opt/openidm/custom
+      - /home/user/openidm-share:/opt/openidm/custom
     networks:
       default:
         aliases:
           - openidm.cybersecu.cap
     environment:
-      OPENIDM_CUSTOM_CONF: custom/config/openidm
+      OPENIDM_CUSTOM_CONF: custom
