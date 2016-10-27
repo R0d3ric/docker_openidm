@@ -14,7 +14,7 @@ services:
     container_name: openidm-postgres
     image: forgerock/openidm-postgres
     volumes:
-      - /opt/dockers/openidm-postgres2:/var/lib/postgresql/data/pgdata
+      - /opt/dockers/openidm-postgres:/var/lib/postgresql/data/pgdata
     networks:
       default:
         aliases:
@@ -31,7 +31,7 @@ services:
     container_name: phppgadmin
     build: phppgadmin/.
     ports:
-      - "80:80"
+      - "8000:80"
     depends_on:
      - openidm4-postgres
     links:
@@ -63,7 +63,7 @@ services:
     volumes:
       - /opt/dockers/openidm-openldap/etc/ldap:/etc/ldap
       - /opt/dockers/openidm-openldap/var/lib/ldap:/var/lib/ldap
-      - /home/user/share:/etc/ldap/prepopulate
+      - /home/user/share/ldapprepopulate:/etc/ldap/prepopulate
     build: openidm-openldap/.
     networks:
       default:
@@ -89,7 +89,7 @@ services:
     #image: forgerock/openidm:nightly
     build: openidm/.
     ports:
-     - "5050:8080"
+     - "8080:8080"
     depends_on:
      - openidm4-postgres
      - openidm4-openldap
@@ -98,7 +98,7 @@ services:
      - openidm4-openldap
     # Edit this for your environment. This should point to your custom OpenIDM config
     volumes:
-      - /home/user/openidm-share:/opt/openidm/custom
+      - /home/user/share/openidmcustom:/opt/openidm/custom
     networks:
       default:
         aliases:
