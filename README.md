@@ -32,12 +32,12 @@ Version : 0.3
 
  * Copy the files in a directory of your choice.
  * You have to create two directories : one for the ldif files needed to populate the LDAP server, and one for custom files for OpenIDM. By default, the paths are :
-       /home/user/share/ldapprepopulate for openldap
-       /home/user/share/openidmcustom   for openidm
+>       /home/user/share/ldapprepopulate for openldap
+>       /home/user/share/openidmcustom   for openidm
  You can use the location you want, in this case just make sure to change the path in the docker-compose file, in the "shared volumes" section.
  * Copy the requiered files to these directories :
-       For openldap : the ldif files which you can find in openidm-openldap/ (1)
-       For openidm  : the datasource.jdbc-default.json, logging.properties, repo.jdbc.json files which you can find in /openidm. If you don't copy them, the synchro with the databse will not work.
+>       For openldap : the ldif files which you can find in openidm-openldap/ (1)
+>       For openidm  : the datasource.jdbc-default.json, logging.properties, repo.jdbc.json files which you can find in /openidm. If you don't copy them, the synchro with the databse will not work.
  * There are other shared volumes, but you don't have to create them, they will be automatically created when building the images. If you want, you can change the location of the other shared volumes. By default, they are located in /opt/, but feel free to change this.
  * Run docker-compose up --build to build and to launch the images.
  * You can now connect to your ldap on the port 389, on OpenIDM on the port 8080 and on the webserver on the port 8000 (feel free to change this in the docker-compoose file).
